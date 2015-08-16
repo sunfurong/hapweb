@@ -7,8 +7,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
-  console.log("sdas");
-  res.render('home',{ title: 'home'});
+  res.render('home',{});
 });
-
+router.get('/images',function(reg,res,next){
+  res.render('secondViews/images',{});
+});
+router.get('/medias',function(reg,res,next){
+  res.render('secondViews/medias',{});
+});
+router.get('/words',function(reg,res,next){
+  res.render('secondViews/words',{});
+});
 module.exports = router;

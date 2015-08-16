@@ -8,9 +8,12 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mysqlcon = require('./mysqlconnect');
+mysqlcon.handleError()
 var app = express();
-
+//mysqlcon.handleError();
 // view engine setup
+//console.log(mysqlcon);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
