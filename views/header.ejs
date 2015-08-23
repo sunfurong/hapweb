@@ -11,6 +11,15 @@
     <!--对IE8以下IE浏览器的样式的支持-->
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <!--对响应式布局的安排-->
+    <!-- Chang URLs to wherever Video.js files will be hosted -->
+    <link href="/stylesheets/video-js.css" rel="stylesheet" type="text/css">
+    <!-- video.js must be in the <head> for older IEs to work. -->
+    <script src="/xjs/video.js"></script>
+
+    <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+    <script>
+        videojs.options.flash.swf = "/stylesheets/video-js.swf";
+    </script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="/xjs/jquery.min.js"></script>
     <script src="/xjs/bootstrap.min.js"></script>
