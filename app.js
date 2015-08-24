@@ -8,20 +8,23 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//var mysqlcon = require('./mysqlconnect');
+//mysqlcon.handleError()
 var app = express();
-
+//mysqlcon.handleError();
 // view engine setup
+//console.log(mysqlcon);
 app.set('views', path.join(__dirname, 'views'));
+app.set('media', path.join(__dirname, 'data_media'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
+// uncomment after placiang your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
 app.use('/users', users);
 
