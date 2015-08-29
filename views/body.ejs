@@ -1,6 +1,6 @@
 
 <!--首页大幕-->
-<div class="section section-home fp-section active" style="height: 531px; padding-top: 66px; opacity: 1;border:3px solid red;background-color: #00B7FF">
+<div class="section section-home fp-section active" style="height: 531px; padding-top: 66px; opacity: 1;border:3px solid red;background-color: #080808">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -70,6 +70,44 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
+    
+        <canvas style="height: 100%;width: 100%;background-color: #080808"></canvas>
+    <script>
+        //<![CDATA[
+        var w,h,step=0;
+        cvs=document.querySelector("canvas"),
+                g=cvs.getContext("2d"),
+//            alert(screen.availWidth)
+                letters=new Array(Math.floor(screen.availWidth/10)).join(1).split(""),
+                reset=function(){
+                    w=cvs.width=window.innerWidth;
+                    h=cvs.height=window.innerHeight;
+                    g.fillStyle="rgba(0,0,0,0.05)";
+                    g.strokeStyle="#0F0";
+                },
+                paint=function(){
+                    if(step=++step&1)
+                    {
+//                        alert(1);
+                        g.fillRect(0,0,w,h);
+                        letters.forEach(function(v,i,arr){
+//                        alert(i);
+                            if(i*10>w)return;
+                            v=v*1+10;
+                            v<h&&g.strokeText(String.fromCharCode(97+Math.random()*26),i*10,v);
+                            arr[i]=v>h+Math.random()*h*2?0:v;
+                        });
+                    }
+                    run(paint);
+                },
+                run=window.requestAnimationFrame||webkitRequestAnimationFrame||function(f){
+                            setTimeout(f,1000/60);
+                        };
+        addEventListener("resize",reset,false);
+        reset();
+        paint();
+        //]]>
+    </script>
 
 </div>
 <!--视频、图片、文字、音乐-->
